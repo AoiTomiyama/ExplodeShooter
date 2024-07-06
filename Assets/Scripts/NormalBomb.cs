@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class NormalBomb : MonoBehaviour
 {
-    [Header("爆発威力")]
-    [SerializeField]
-    float _explosionPower;
-    [Header("爆発半径")]
-    [SerializeField]
-    float _explosionRadius;
+    public float _power;
+    public float _r;
     [Header("爆発エフェクト")]
     [SerializeField]
     GameObject _explosionEffect;
@@ -28,7 +24,7 @@ public class NormalBomb : MonoBehaviour
         if (collision.gameObject.name.Contains("Block"))
         {
             var collider = gameObject.AddComponent<CircleCollider2D>();
-            collider.radius = _explosionRadius;
+            collider.radius = _r;
             collider.isTrigger = true;
             Invoke(nameof(Explosion), Time.deltaTime);
         }
@@ -46,13 +42,17 @@ public class NormalBomb : MonoBehaviour
         {
             foreach (GameObject obj in _victims)
             {
-                Vector2 facing = (obj.transform.position - transform.position).normalized;
+                Vector2 direction = (obj.transform.position - transform.position).normalized;
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-                rb.velocity = facing * _explosionPower;
+                rb.velocity = direction * _power;
                 rb.constraints = RigidbodyConstraints2D.None;
             }
             Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+    public void PowerUp(float power)
+    {
+        _power *= power;
     }
 }

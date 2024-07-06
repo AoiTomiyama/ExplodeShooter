@@ -5,25 +5,24 @@ using UnityEngine;
 public class BlockGenerator : MonoBehaviour
 {
     [SerializeField]
-    GameObject block;
+    GameObject _block;
     [SerializeField]
-    int sizeY = 5;
+    int _sizeY = 5;
     [SerializeField]
-    int sizeX = 5;
+    int _sizeX = 5;
     private void Start()
     {
         SetBlock();
     }
     void SetBlock()
     {
-        for (int i = 0; i < sizeY; i++)
+        for (int i = 0; i < _sizeY; i++)
         {
-            for (int j = 0; j < sizeX; j++)
+            for (int j = 0; j < _sizeX; j++)
             {
-                var pos = new Vector2(this.transform.position.x + j * block.transform.localScale.x * 1.05f, this.transform.position.y + i * block.transform.localScale.y);
-                var go = Instantiate(block, pos, Quaternion.identity, transform);
-                go.name = block.name + "_" + (sizeX * i + j);
-                //go.GetComponent<Rigidbody2D>().mass = sizeX * sizeY - (sizeX * i + j);
+                var pos = new Vector2(this.transform.position.x + j * _block.transform.localScale.x, this.transform.position.y + i * _block.transform.localScale.y);
+                var go = Instantiate(_block, pos, Quaternion.identity, transform);
+                go.name = _block.name + "_" + (_sizeX * i + j);
             }
         }
     }

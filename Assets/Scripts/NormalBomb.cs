@@ -25,10 +25,13 @@ public class NormalBomb : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var collider = gameObject.AddComponent<CircleCollider2D>();
-        collider.radius = _explosionRadius;
-        collider.isTrigger = true;
-        Invoke(nameof(Explosion), Time.deltaTime);
+        if (collision.gameObject.name.Contains("Block"))
+        {
+            var collider = gameObject.AddComponent<CircleCollider2D>();
+            collider.radius = _explosionRadius;
+            collider.isTrigger = true;
+            Invoke(nameof(Explosion), Time.deltaTime);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,6 +49,7 @@ public class NormalBomb : MonoBehaviour
                 Vector2 facing = (obj.transform.position - transform.position).normalized;
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
                 rb.velocity = facing * _explosionPower;
+                rb.constraints = RigidbodyConstraints2D.None;
             }
             Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);
             Destroy(gameObject);

@@ -20,8 +20,10 @@ public class BlockGenerator : MonoBehaviour
         {
             for (int j = 0; j < sizeX; j++)
             {
-                var pos = this.transform.position + Vector3.up * i * block.transform.localScale.y + Vector3.right * j * block.transform.localScale.x;
-                Instantiate(block, pos, Quaternion.identity);
+                var pos = new Vector2(this.transform.position.x + j * block.transform.localScale.x * 1.05f, this.transform.position.y + i * block.transform.localScale.y);
+                var go = Instantiate(block, pos, Quaternion.identity, transform);
+                go.name = block.name + "_" + (sizeX * i + j);
+                //go.GetComponent<Rigidbody2D>().mass = sizeX * sizeY - (sizeX * i + j);
             }
         }
     }

@@ -7,8 +7,8 @@ public class ExplosionPowerUp : PowerUpItemBase
     [Header("‹­‰»‚·‚é”{—¦")]
     [SerializeField]
     float _multiply;
-    public override void PowerUp()
+    public override void PowerUp(float duration)
     {
-        FindObjectOfType<Shoot>().GetComponent<Shoot>().IncreaseExplodePower(_multiply);
+        StartCoroutine(FindObjectOfType<Shoot>().GetComponent<Shoot>().IncreaseExplodePower(_multiply, duration));
     }
 }

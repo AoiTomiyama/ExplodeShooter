@@ -35,9 +35,12 @@ public class Shoot : MonoBehaviour
             time = 0;
         }
     }
-    public void IncreaseExplodePower(float power)
+    public IEnumerator IncreaseExplodePower(float power, float duratoin)
     {
         _explosionPower *= power;
         _explosionRadius *= power;
+        yield return new WaitForSeconds(duratoin);
+        _explosionPower /= power;
+        _explosionRadius /= power;
     }
 }

@@ -21,7 +21,7 @@ public class NormalBomb : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Contains("Block"))
+        if (collision.gameObject.name != "Player")
         {
             var collider = gameObject.AddComponent<CircleCollider2D>();
             collider.radius = _r;
@@ -47,9 +47,10 @@ public class NormalBomb : MonoBehaviour
                 rb.velocity = direction * _power;
                 rb.constraints = RigidbodyConstraints2D.None;
             }
-            Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);
-            Destroy(gameObject);
         }
+        var effect = Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);
+        effect.transform.localScale = Vector3.one * _r;
+        Destroy(gameObject);
     }
     public void PowerUp(float power)
     {

@@ -7,9 +7,10 @@ public class PlayerMove : MonoBehaviour
     float _moveSpeed = 5f;
     /// <summary>è„â∫Ç∆ç∂âEÇÃì¸óÕ</summary>
     float _h, _v;
+    private BoxCollider2D _collider;
     void Start()
     {
-
+        _collider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -25,18 +26,14 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        float lineLengthVertical = 0.5f;
-        float lineLengthHorizontal = 1f;
-        var hitLeft = Physics2D.Linecast(transform.position, transform.position + Vector3.left * lineLengthHorizontal);
-        var hitRight = Physics2D.Linecast(transform.position, transform.position + Vector3.right * lineLengthHorizontal);
-        var hitUp = Physics2D.Linecast(transform.position, transform.position + Vector3.up * lineLengthVertical);
-        var hitDown = Physics2D.Linecast(transform.position, transform.position + Vector3.down * lineLengthVertical);
-        Debug.DrawLine(this.transform.position + Vector3.left * lineLengthHorizontal, this.transform.position + Vector3.right * lineLengthHorizontal);
-        Debug.DrawLine(this.transform.position + Vector3.up * lineLengthVertical, this.transform.position + Vector3.down * lineLengthVertical);
-        if (hitLeft.collider != null && hitLeft.collider.gameObject.name.Contains("Wall") && _h < 0) _h = 0;
-        if (hitRight.collider != null && hitRight.collider.gameObject.name.Contains("Wall") && _h > 0) _h = 0;
-        if (hitDown.collider != null && hitDown.collider.gameObject.name.Contains("Wall") && _v < 0) _v = 0;
-        if (hitUp.collider != null && hitUp.collider.gameObject.name.Contains("Wall") && _v > 0) _v = 0;
+        var playerDownLeft = (Vector2)this.transform.position - _collider.size / 2;
+        var playerUpRight = (Vector2)this.transform.position + _collider.size / 2;
+        var screenDownLeft = -Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        var screenUpRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        if (playerDownLeft.x < screenDownLeft.x && _h < 0) _h = 0;
+        if (playerDownLeft.y < screenDownLeft.y && _v < 0) _v = 0;
+        if (playerUpRight.x > screenUpRight.x && _h > 0) _h = 0;
+        if (playerUpRight.y > screenUpRight.y && _v > 0) _v = 0;
         transform.Translate(new Vector2(_h, _v) * _moveSpeed * Time.deltaTime);
     }
 }

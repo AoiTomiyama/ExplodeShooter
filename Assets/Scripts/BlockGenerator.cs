@@ -36,7 +36,7 @@ public class BlockGenerator : MonoBehaviour
                 {
                     block = _blocks[0];
                 }
-                var pos = new Vector2(this.transform.position.x + j * block.transform.localScale.x, this.transform.position.y + i * block.transform.localScale.y * 1.01f);
+                var pos = new Vector2(this.transform.position.x + j * block.transform.localScale.x, this.transform.position.y + i * block.transform.localScale.y);
                 var go = Instantiate(block, pos, Quaternion.identity, transform);
                 go.name = block.name + "_" + (_sizeX * i + j);
             }
@@ -45,5 +45,9 @@ public class BlockGenerator : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Translate(Vector3.left * Time.deltaTime * _wallSpeed);
+        if (transform.position.x < -25)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blocks:
   - {fileID: 8051960110634529662, guid: de884ec5df9ef294986e63331e6dc852, type: 3}
-  - {fileID: 8051960110634529662, guid: cc8fcda757738754f9b790a5430127ca, type: 3}
+  - {fileID: 8051960110634529662, guid: 49a8dccc4ec6cb64c9c3365a126e9317, type: 3}
   _sizeY: 20
-  _sizeX: 2
-  _secondBlockHeight: 6
-  _secondBlockStartY: 1
+  _sizeX: 4
+  _secondBlockHeight: 7
+  _secondBlockStartY: 2

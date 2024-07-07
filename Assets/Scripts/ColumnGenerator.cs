@@ -13,7 +13,6 @@ public class ColumnGenerator : MonoBehaviour
     [Header("’Œ‚ÌˆÚ“®‘¬“x")]
     [SerializeField]
     private float _wallSpeed;
-    private float _timeOfGeneration;
     private float _time;
     private void Start()
     {
@@ -31,7 +30,7 @@ public class ColumnGenerator : MonoBehaviour
             go.GetComponent<BlockGenerator>().WallSpeed = _wallSpeed;
             _time = 0;
             _wallSpeed += 0.1f;
-            _timeOfGeneration -= 0.1f;
+            if (_timeOfGenerate > 1f) _timeOfGenerate -= 0.05f;
         }
     }
 }

@@ -46,7 +46,7 @@ public class NormalBomb : MonoBehaviour
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
                 if (rb.bodyType != RigidbodyType2D.Static)
                 {
-                    rb.velocity = direction * _power;
+                    rb.AddForce(direction * _power, ForceMode2D.Impulse);
                 }
             }
         }

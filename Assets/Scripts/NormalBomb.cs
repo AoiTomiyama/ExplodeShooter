@@ -44,8 +44,10 @@ public class NormalBomb : MonoBehaviour
             {
                 Vector2 direction = (obj.transform.position - transform.position).normalized;
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-                rb.velocity = direction * _power;
-                rb.constraints = RigidbodyConstraints2D.None;
+                if (rb.bodyType != RigidbodyType2D.Static)
+                {
+                    rb.velocity = direction * _power;
+                }
             }
         }
         var effect = Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);

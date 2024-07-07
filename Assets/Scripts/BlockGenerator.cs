@@ -20,7 +20,7 @@ public class BlockGenerator : MonoBehaviour
         {
             for (int j = 0; j < _sizeX; j++)
             {
-                var pos = new Vector2(this.transform.position.x + j * _block.transform.localScale.x * 1.05f, this.transform.position.y + i * _block.transform.localScale.y);
+                var pos = new Vector2(this.transform.position.x + j * _block.transform.localScale.x, this.transform.position.y + i * _block.transform.localScale.y);
                 var go = Instantiate(_block, pos, Quaternion.identity, transform);
                 go.name = _block.name + "_" + (_sizeX * i + j);
             }

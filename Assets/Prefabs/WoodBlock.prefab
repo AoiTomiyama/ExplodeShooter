@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5928155961650830589}
   - component: {fileID: 1215803683185858628}
   m_Layer: 2
-  m_Name: Block
+  m_Name: WoodBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08f1d021737e8b542b11fb337bb440be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cd3f3438cb7c5b4299911c3a0ef8f45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,9 +96,9 @@ Rigidbody2D:
   m_GameObject: {fileID: 8051960110634529662}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 1
   m_AngularDrag: 1000000
   m_GravityScale: 0.5
@@ -110,7 +110,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &1215803683185858628

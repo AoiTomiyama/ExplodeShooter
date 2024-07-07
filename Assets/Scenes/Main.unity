@@ -798,7 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionPower: 30
   _explosionRadius: 1
-  _cooldownTime: 2
+  _cooldownTime: 1
   _bullet: {fileID: 528745264771349974, guid: 312c9a2bfa760a84eb6175b5e035e739, type: 3}
   _cooldownSlider: {fileID: 1241365110}
 --- !u!1 &1135262578
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bc0941e7142a741b84c1ab14c3a972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _block: {fileID: 8051960110634529662, guid: 49a8dccc4ec6cb64c9c3365a126e9317, type: 3}
+  _block: {fileID: 8051960110634529662, guid: de884ec5df9ef294986e63331e6dc852, type: 3}
   _sizeY: 20
   _sizeX: 5
 --- !u!4 &1921710580
@@ -1621,6 +1621,14 @@ PrefabInstance:
     - target: {fileID: 3973382842400023214, guid: 171ca1eb43cc1304aa0383fe67e0b5c2, type: 3}
       propertyPath: m_Name
       value: ExploPowerUpItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172397910616268453, guid: 171ca1eb43cc1304aa0383fe67e0b5c2, type: 3}
+      propertyPath: _duration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172397910616268453, guid: 171ca1eb43cc1304aa0383fe67e0b5c2, type: 3}
+      propertyPath: _multiply
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

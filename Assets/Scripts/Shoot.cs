@@ -27,11 +27,11 @@ public class Shoot : MonoBehaviour
             time += Time.deltaTime;
             _cooldownSlider.value = time / _cooldownTime;
         }
-        if (Input.GetButtonDown("Fire1") && time >= _cooldownTime)
+        if (time >= _cooldownTime)
         {
             var scr = Instantiate(_bullet, transform.position, Quaternion.identity).GetComponent<NormalBomb>();
-            scr._power = this._explosionPower;
-            scr._r = this._explosionRadius;
+            scr.Power = this._explosionPower;
+            scr.R = this._explosionRadius;
             time = 0;
         }
     }
@@ -42,5 +42,11 @@ public class Shoot : MonoBehaviour
         yield return new WaitForSeconds(duratoin);
         _explosionPower /= power;
         _explosionRadius /= power;
+    }
+    public IEnumerator ReduceCooldown(float duratoin)
+    {
+        _cooldownTime /= 2;
+        yield return new WaitForSeconds(duratoin);
+        _cooldownTime *= 2;
     }
 }

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 5
   _durationSlider: {fileID: 5508221803969939360, guid: ba322a0b88c99a744a01147f6d794177, type: 3}
+  _color: {r: 1, g: 0.34608427, b: 0, a: 1}
   _multiply: 2
 --- !u!61 &8274287713069498364
 BoxCollider2D:

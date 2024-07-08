@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 112773576195920019}
   - component: {fileID: 6499957438619599332}
+  - component: {fileID: -6626760979472835258}
   m_Layer: 0
   m_Name: BlockGenerator
   m_TagString: Untagged
@@ -47,7 +48,19 @@ MonoBehaviour:
   _blocks:
   - {fileID: 8051960110634529662, guid: de884ec5df9ef294986e63331e6dc852, type: 3}
   - {fileID: 8051960110634529662, guid: 49a8dccc4ec6cb64c9c3365a126e9317, type: 3}
-  _sizeY: 20
-  _sizeX: 4
+  _sizeY: 40
+  _sizeX: 3
   _secondBlockHeight: 7
-  _secondBlockStartY: 2
+  _secondBlockStartY: 9
+--- !u!114 &-6626760979472835258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730848976579757084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f49ef1eee81ec344aa08a52247f0324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

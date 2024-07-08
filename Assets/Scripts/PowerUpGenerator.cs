@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColumnGenerator : MonoBehaviour
+public class PowerUpGenerator : MonoBehaviour
 {
-    [Header("ブロックパターン、またはブロック生成機を入れる")]
+    [Header("パワーアップを入れる")]
     [SerializeField]
-    GameObject[] _columns;
+    GameObject[] _items;
     [Header("何秒おきに生成するか")]
     [SerializeField]
     private float _timeOfGenerate;
-    [Header("柱の移動速度")]
-    [SerializeField]
-    private float _wallSpeed;
+    private float _speed = 1;
     private float _time;
     private void Start()
     {
@@ -26,11 +24,12 @@ public class ColumnGenerator : MonoBehaviour
         }
         if (_time >= _timeOfGenerate)
         {
-            var go = Instantiate(_columns[Random.Range(0, _columns.Length)], transform.position, Quaternion.identity);
-            go.GetComponent<BlockMove>().WallSpeed = _wallSpeed;
+            var go = Instantiate(_items[Random.Range(0, _items.Length)], transform.position, Quaternion.identity);
+            go.GetComponent<PowerUpItemBase>().ItemSpeed = _speed;
             _time = 0;
-            _wallSpeed += 0.1f;
-            if (_timeOfGenerate > 1f) _timeOfGenerate -= 0.05f;
+            _speed += 0.1f;
+            _timeOfGenerate += 0.1f;
+            this.transform.position = new Vector2(transform.position.x, Random.Range(-4.5f, 4.5f));
         }
     }
 }

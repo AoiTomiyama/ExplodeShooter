@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BlockGenerator : MonoBehaviour
 {
@@ -12,13 +14,10 @@ public class BlockGenerator : MonoBehaviour
     int _secondBlockHeight = 1;
     [SerializeField]
     int _secondBlockStartY = 3;
-    private float _wallSpeed = 1;
-
-    public float WallSpeed { set => _wallSpeed = value; }
 
     private void Start()
     {
-        _secondBlockStartY += Random.Range(0, 6);
+        _secondBlockStartY += Random.Range(0, 10);
         SetBlock();
     }
     void SetBlock()
@@ -40,14 +39,6 @@ public class BlockGenerator : MonoBehaviour
                 var go = Instantiate(block, pos, Quaternion.identity, transform);
                 go.name = block.name + "_" + (_sizeX * i + j);
             }
-        }
-    }
-    private void FixedUpdate()
-    {
-        transform.Translate(Vector3.left * Time.deltaTime * _wallSpeed);
-        if (transform.position.x < -25)
-        {
-            Destroy(this.gameObject);
         }
     }
 }

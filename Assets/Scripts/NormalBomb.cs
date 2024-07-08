@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class NormalBomb : MonoBehaviour
 {
-    public float _power;
-    public float _r;
+    private float _power;
+    private float _r;
     [Header("爆発エフェクト")]
     [SerializeField]
     GameObject _explosionEffect;
     List<GameObject> _victims = new List<GameObject>();
     Rigidbody2D _rb;
 
+    public float Power { set => _power = value; }
+    public float R { set => _r = value; }
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.AddForce(Vector2.right, ForceMode2D.Impulse);
+        _rb.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +28,8 @@ public class NormalBomb : MonoBehaviour
             var collider = gameObject.AddComponent<CircleCollider2D>();
             collider.radius = _r;
             collider.isTrigger = true;
+            var effect = Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);
+            effect.transform.localScale = Vector3.one * _r;
             Invoke(nameof(Explosion), Time.deltaTime);
         }
     }
@@ -44,18 +48,16 @@ public class NormalBomb : MonoBehaviour
             {
                 Vector2 direction = (obj.transform.position - transform.position).normalized;
                 Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-                if (rb.bodyType != RigidbodyType2D.Static)
+                if (rb.bodyType == RigidbodyType2D.Kinematic)
+                {
+                    Destroy(obj);
+                }
+                else if (rb.bodyType == RigidbodyType2D.Dynamic)
                 {
                     rb.AddForce(direction * _power, ForceMode2D.Impulse);
                 }
             }
+            Destroy(gameObject);
         }
-        var effect = Instantiate(_explosionEffect, this.transform.position, Quaternion.identity);
-        effect.transform.localScale = Vector3.one * _r;
-        Destroy(gameObject);
-    }
-    public void PowerUp(float power)
-    {
-        _power *= power;
     }
 }

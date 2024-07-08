@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class BackgroundLoop : MonoBehaviour
 {
-    //[Header("背景の移動速度")]
-    //[SerializeField]
-    //float _speed;
-    //[Header("ループする際のX座標")]
-    //[SerializeField]
-    //float _x;
-    //void FixedUpdate()
-    //{
-    //    transform.position += Vector3.left * Time.deltaTime * _speed;
-    //    if (transform.position.x < _x)
-    //    {
-    //        transform.position = Vector3.zero;
-    //    }
-    //}
     private const float k_maxLength = 1f;
     private const string k_propName = "_MainTex";
 

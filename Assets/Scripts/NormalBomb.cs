@@ -46,15 +46,18 @@ public class NormalBomb : MonoBehaviour
         {
             foreach (GameObject obj in _victims)
             {
-                Vector2 direction = (obj.transform.position - transform.position).normalized;
-                Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-                if (rb.bodyType == RigidbodyType2D.Kinematic)
+                if (obj != null)
                 {
-                    Destroy(obj);
-                }
-                else if (rb.bodyType == RigidbodyType2D.Dynamic)
-                {
-                    rb.AddForce(direction * _power, ForceMode2D.Impulse);
+                    Vector2 direction = (obj.transform.position - transform.position).normalized;
+                    Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+                    if (rb.bodyType == RigidbodyType2D.Kinematic)
+                    {
+                        Destroy(obj);
+                    }
+                    else if (rb.bodyType == RigidbodyType2D.Dynamic)
+                    {
+                        rb.AddForce(direction * _power, ForceMode2D.Impulse);
+                    }
                 }
             }
             Destroy(gameObject);

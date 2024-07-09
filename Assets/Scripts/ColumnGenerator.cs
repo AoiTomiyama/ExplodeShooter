@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ColumnGenerator : MonoBehaviour
 {
@@ -14,9 +15,12 @@ public class ColumnGenerator : MonoBehaviour
     [SerializeField]
     private float _wallSpeed;
     private float _time;
+    private float _elapsedTime;
+    private Text _recordText;
     private void Start()
     {
         _time = _timeOfGenerate;
+        _recordText = GameObject.Find("Record").GetComponent<Text>();
     }
     void Update()
     {
@@ -32,5 +36,10 @@ public class ColumnGenerator : MonoBehaviour
             _wallSpeed += 0.1f;
             if (_timeOfGenerate > 1f) _timeOfGenerate -= 0.05f;
         }
+    }
+    private void FixedUpdate()
+    {
+        _elapsedTime += (_wallSpeed + _timeOfGenerate) / 200;
+        _recordText.text = _elapsedTime.ToString("F2") + "m";
     }
 }

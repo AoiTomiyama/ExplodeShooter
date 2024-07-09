@@ -60,7 +60,7 @@ public class NormalBomb : MonoBehaviour
                     }
                 }
             }
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

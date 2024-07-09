@@ -28,7 +28,6 @@ public class PowerUpGenerator : MonoBehaviour
             go.GetComponent<PowerUpItemBase>().ItemSpeed = _speed;
             _time = 0;
             _speed += 0.1f;
-            _timeOfGenerate += 0.1f;
             this.transform.position = new Vector2(transform.position.x, Random.Range(-4.5f, 4.5f));
         }
     }

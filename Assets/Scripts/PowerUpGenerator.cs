@@ -25,7 +25,7 @@ public class PowerUpGenerator : MonoBehaviour
         if (_time >= _timeOfGenerate)
         {
             var go = Instantiate(_items[Random.Range(0, _items.Length)], transform.position, Quaternion.identity);
-            go.GetComponent<PowerUpItemBase>().ItemSpeed = _speed;
+            go.GetComponent<PowerUpItemBase>()._itemSpeed = _speed;
             _time = 0;
             _speed += 0.1f;
             this.transform.position = new Vector2(transform.position.x, Random.Range(-4.5f, 4.5f));

@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-
+/// <summary>
+/// 弾の発射クールダウンを半減するパワーアップ。
+/// </summary>
 public class RapidshotPowerUp : PowerUpItemBase
 {
-    public override void PowerUp(float duration)
+    public override void PowerUp()
     {
-        StartCoroutine(FindObjectOfType<Shoot>().GetComponent<Shoot>().ReduceCooldown(duration));
+        _shootMuzzle._cooldownTime /= 2;
+    }
+    public override void RemovePowerUp()
+    {
+        _shootMuzzle._cooldownTime *= 2;
     }
 }

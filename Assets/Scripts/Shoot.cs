@@ -6,14 +6,11 @@ using UnityEngine.UI;
 public class Shoot : MonoBehaviour
 {
     [Header("爆発威力")]
-    [SerializeField]
-    float _explosionPower;
+    public float _explosionPower;
     [Header("爆発半径")]
-    [SerializeField]
-    float _explosionRadius;
+    public float _explosionRadius;
     [Header("クールダウン")]
-    [SerializeField]
-    float _cooldownTime = 3;
+    public float _cooldownTime = 3;
     [SerializeField]
     GameObject _bullet;
     [SerializeField]
@@ -30,23 +27,19 @@ public class Shoot : MonoBehaviour
         if (time >= _cooldownTime)
         {
             var scr = Instantiate(_bullet, transform.position, Quaternion.identity).GetComponent<NormalBomb>();
-            scr.Power = this._explosionPower;
-            scr.R = this._explosionRadius;
+            scr.Power = _explosionPower;
+            scr.R = _explosionRadius;
             time = 0;
         }
-    }
-    public IEnumerator IncreaseExplodePower(float power, float duratoin)
-    {
-        _explosionPower *= power;
-        _explosionRadius *= power;
-        yield return new WaitForSeconds(duratoin);
-        _explosionPower /= power;
-        _explosionRadius /= power;
     }
     public IEnumerator ReduceCooldown(float duratoin)
     {
         _cooldownTime /= 2;
         yield return new WaitForSeconds(duratoin);
+        RemoveCooldownPower();
+    }
+    public void RemoveCooldownPower()
+    {
         _cooldownTime *= 2;
     }
 }

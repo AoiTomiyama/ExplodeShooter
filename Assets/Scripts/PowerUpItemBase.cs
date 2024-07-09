@@ -21,7 +21,7 @@ public abstract class PowerUpItemBase : MonoBehaviour
     float _elapsed;
     public float _itemSpeed = 1;
     public Shoot _shootMuzzle;
-    private Slider _currentSlider;
+    public Slider _currentSlider;
 
     private void Start()
     {
@@ -35,6 +35,7 @@ public abstract class PowerUpItemBase : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            _shootMuzzle._powerUpList.Add(this);
             PowerUp();
             StartCoroutine(DurationControl());
         }
@@ -57,20 +58,21 @@ public abstract class PowerUpItemBase : MonoBehaviour
             _elapsed += Time.deltaTime;
             _currentSlider.value = 1 - _elapsed / _duration;
         }
-        DurationComplete();
-    }
-    private void DurationComplete()
-    {
         RemovePowerUp();
-        Destroy(_currentSlider.gameObject);
-        Destroy(gameObject);
     }
     private void FixedUpdate()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * _itemSpeed);
-        if (transform.position.x < -80)
+        if (_elapsed == 0)
         {
-            Destroy(this.gameObject);
+            transform.Translate(_itemSpeed * Time.deltaTime * Vector3.left);
+            if (transform.position.x < -30)
+            {
+                Destroy(this.gameObject);
+            }
         }
+    }
+    private void OnDestroy()
+    {
+        _shootMuzzle._powerUpList.Remove(this);
     }
 }

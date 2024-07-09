@@ -16,5 +16,7 @@ public class ExplosionPowerUp : PowerUpItemBase
     {
         _shootMuzzle._explosionPower /= _multiply;
         _shootMuzzle._explosionRadius /= _multiply;
+        Destroy(_currentSlider.gameObject);
+        Destroy(gameObject);
     }
 }

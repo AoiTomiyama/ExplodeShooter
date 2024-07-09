@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,7 +25,7 @@ public class BlockGenerator : MonoBehaviour
         {
             for (int j = 0; j < _sizeX; j++)
             {
-                GameObject block = null;
+                GameObject block;
                 if (i >= _secondBlockStartY - 1 && i < _secondBlockStartY + _secondBlockHeight - 1)
                 {
                     block = _blocks[1];

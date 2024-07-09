@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ public class NormalBomb : MonoBehaviour
     [Header("爆発エフェクト")]
     [SerializeField]
     GameObject _explosionEffect;
-    List<GameObject> _victims = new List<GameObject>();
+    List<GameObject> _victims = new();
     Rigidbody2D _rb;
 
     public float Power { set => _power = value; }
@@ -23,7 +22,7 @@ public class NormalBomb : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name != "Player")
+        if (collision.gameObject.name != "Player" && collision.gameObject.name != this.gameObject.name)
         {
             var collider = gameObject.AddComponent<CircleCollider2D>();
             collider.radius = _r;
@@ -52,7 +51,8 @@ public class NormalBomb : MonoBehaviour
                     Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
                     if (rb.bodyType == RigidbodyType2D.Kinematic)
                     {
-                        Destroy(obj);
+                        //Destroy(obj);
+                        rb.velocity = direction * _power;
                     }
                     else if (rb.bodyType == RigidbodyType2D.Dynamic)
                     {

@@ -10,5 +10,7 @@ public class RapidshotPowerUp : PowerUpItemBase
     public override void RemovePowerUp()
     {
         _shootMuzzle._cooldownTime *= 2;
+        Destroy(_currentSlider.gameObject);
+        Destroy(gameObject);
     }
 }

@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour
     Slider _cooldownSlider;
 
     float time;
+    public List<PowerUpItemBase> _powerUpList = new();
     private void Update()
     {
         if (time < _cooldownTime)
@@ -31,15 +32,5 @@ public class Shoot : MonoBehaviour
             scr.R = _explosionRadius;
             time = 0;
         }
-    }
-    public IEnumerator ReduceCooldown(float duratoin)
-    {
-        _cooldownTime /= 2;
-        yield return new WaitForSeconds(duratoin);
-        RemoveCooldownPower();
-    }
-    public void RemoveCooldownPower()
-    {
-        _cooldownTime *= 2;
     }
 }

@@ -34,6 +34,6 @@ public class PlayerMove : MonoBehaviour
         if (playerDownLeft.y < screenDownLeft.y && _v < 0) _v = 0;
         if (playerUpRight.x > screenUpRight.x && _h > 0) _h = 0;
         if (playerUpRight.y > screenUpRight.y && _v > 0) _v = 0;
-        transform.Translate(new Vector2(_h, _v) * _moveSpeed * Time.deltaTime);
+        transform.Translate(_moveSpeed * Time.deltaTime * new Vector2(_h, _v));
     }
 }

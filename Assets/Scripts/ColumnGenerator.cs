@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ColumnGenerator : MonoBehaviour
 {
@@ -34,5 +31,5 @@ public class ColumnGenerator : MonoBehaviour
             if (_timeOfGenerate > 1f) _timeOfGenerate -= 0.05f;
         }
     }
-    
+
 }

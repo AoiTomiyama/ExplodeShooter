@@ -16,7 +16,7 @@ public class BlockGenerator : MonoBehaviour
 
     private void Start()
     {
-        _secondBlockStartY += Random.Range(0, 10);
+        _secondBlockStartY += Random.Range(0, 15);
         SetBlock();
     }
     void SetBlock()

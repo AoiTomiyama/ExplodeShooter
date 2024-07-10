@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 51ef156a817ae6748bc77425930f51b3, type: 3}
   m_Color: {r: 0, g: 1, b: 0.8820832, a: 1}
   m_FlipX: 0
@@ -98,9 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2984cc7f9d44d704da882af0d52e9768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 10
+  _duration: 20
   _durationSlider: {fileID: 5508221803969939360, guid: ba322a0b88c99a744a01147f6d794177, type: 3}
   _color: {r: 0, g: 1, b: 0.5543158, a: 1}
+  _itemSpeed: 1
+  _shootMuzzle: {fileID: 0}
+  _currentSlider: {fileID: 0}
 --- !u!61 &-8619077042474385515
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class PowerUpGenerator : MonoBehaviour
     [Header("‰½•b‚¨‚«‚É¶¬‚·‚é‚©")]
     [SerializeField]
     private float _timeOfGenerate;
-    private float _speed = 1;
+    private float _speed = 3;
     private float _time;
     private void Start()
     {

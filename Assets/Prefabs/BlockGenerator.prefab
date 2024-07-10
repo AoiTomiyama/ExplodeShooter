@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 8051960110634529662, guid: 49a8dccc4ec6cb64c9c3365a126e9317, type: 3}
   _sizeY: 40
   _sizeX: 3
-  _secondBlockHeight: 7
+  _secondBlockHeight: 4
   _secondBlockStartY: 9
 --- !u!114 &-6626760979472835258
 MonoBehaviour:

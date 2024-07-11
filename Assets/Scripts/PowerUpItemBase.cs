@@ -18,6 +18,9 @@ public abstract class PowerUpItemBase : MonoBehaviour
     [Header("ÉQÅ[ÉWÇÃêF")]
     [SerializeField]
     Color _color;
+    [Header("éÊìæéûÇÃå¯â âπ")]
+    [SerializeField]
+    AudioClip _clip;
     float _elapsed;
     public float _itemSpeed = 1;
     public Shoot _shootMuzzle;
@@ -31,11 +34,12 @@ public abstract class PowerUpItemBase : MonoBehaviour
     public abstract void RemovePowerUp();
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
             _shootMuzzle._powerUpList.Add(this);
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position);
             PowerUp();
             StartCoroutine(DurationControl());
         }

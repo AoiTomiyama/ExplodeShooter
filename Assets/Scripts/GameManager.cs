@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        _elapsedTime += Time.deltaTime * 10;
+        _elapsedTime += Time.deltaTime * 5;
         _recordText.text = _elapsedTime.ToString("N0") + "m";
+    }
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("RECORD", Mathf.CeilToInt(_elapsedTime));
     }
 }

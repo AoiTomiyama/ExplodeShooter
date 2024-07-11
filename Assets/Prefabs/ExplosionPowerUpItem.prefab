@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8274287713069498364}
   - component: {fileID: 418456680661219912}
   m_Layer: 0
-  m_Name: ExploPowerUpItem
+  m_Name: ExplosionPowerUpItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   _duration: 15
   _durationSlider: {fileID: 5508221803969939360, guid: ba322a0b88c99a744a01147f6d794177, type: 3}
   _color: {r: 1, g: 0.34608427, b: 0, a: 1}
+  _clip: {fileID: 8300000, guid: 3a155e1fe67d22c45a20c64e9e0c312a, type: 3}
   _itemSpeed: 1
   _shootMuzzle: {fileID: 0}
   _currentSlider: {fileID: 0}

@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionEffect: {fileID: 5254015365900376002, guid: 42c08d8e8411885448a64a80641478d3, type: 3}
+  _clip: {fileID: 8300000, guid: 9e92a1bdbadc3284cab9144c3b6e8de9, type: 3}

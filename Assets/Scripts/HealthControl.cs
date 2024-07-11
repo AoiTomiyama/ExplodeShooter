@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class HealthControl : MonoBehaviour
 {
@@ -42,8 +41,7 @@ public class HealthControl : MonoBehaviour
         {
             for (int i = _health; i > _health - damage; i--)
             {
-                _healthBar[i - 1].GetComponent<Image>().color = Color.red;
-                Destroy(_healthBar[i - 1], 0.5f);
+                Destroy(_healthBar[i - 1]);
             }
             _health -= damage;
             Debug.Log($"Bullet Hit! Took {damage} damage! Remaining health is {_health} !");
@@ -56,6 +54,6 @@ public class HealthControl : MonoBehaviour
     void Gameover()
     {
         Debug.Log("Gameover");
-        //SceneManager.LoadScene("Gameover");
+        SceneManager.LoadScene("Gameover");
     }
 }

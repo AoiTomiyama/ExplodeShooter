@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class NormalBomb : MonoBehaviour
 {
-    private float _power;
-    private float _r;
     [Header("爆発エフェクト")]
     [SerializeField]
     GameObject _explosionEffect;
+    [Header("爆発時の効果音")]
+    [SerializeField]
+    AudioClip _clip;
+    private float _power;
+    private float _r;
     List<GameObject> _victims = new();
     Rigidbody2D _rb;
 
@@ -61,6 +64,11 @@ public class NormalBomb : MonoBehaviour
                 }
             }
         }
+        AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position);
+        Destroy(gameObject);
+    }
+    private void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 }

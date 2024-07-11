@@ -13,9 +13,10 @@ public class NeutralizePowerUp : MonoBehaviour
     private void Start()
     {
         _lr = GetComponent<LineRenderer>();
+        var direction = GameObject.Find("Player").transform.position - this.transform.position;
         _lr.SetPosition(0, this.transform.position);
-        transform.up = FindObjectOfType<PlayerHitbox>().transform.position - this.transform.position;
-        _lr.SetPosition(1, transform.up * 50);
+        _lr.SetPosition(1, direction * 10);
+        transform.up = direction.normalized;
 
     }
     private void FixedUpdate()

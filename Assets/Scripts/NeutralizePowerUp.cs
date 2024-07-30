@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NeutralizePowerUp : MonoBehaviour
@@ -30,7 +28,7 @@ public class NeutralizePowerUp : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player" )
+        if (collision.gameObject.name == "Player")
         {
             if (FindObjectOfType<Shoot>()._powerUpList.Count != 0)
             {
@@ -42,9 +40,5 @@ public class NeutralizePowerUp : MonoBehaviour
             AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position);
             Destroy(this.gameObject);
         }
-    }
-    private void OnDestroy()
-    {
-        
     }
 }

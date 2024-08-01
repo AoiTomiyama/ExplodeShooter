@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using unityroom.Api;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        UnityroomApiClient.Instance.SendScore(1, _elapsedTime, ScoreboardWriteMode.HighScoreDesc);
         PlayerPrefs.SetInt("RECORD", Mathf.CeilToInt(_elapsedTime));
     }
 }
